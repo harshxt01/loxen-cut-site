@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harshxt01.github.io/loxen-cut-site/sitemap.xml
