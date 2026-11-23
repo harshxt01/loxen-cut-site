@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-repo="https://github.com/harshxt01/loxen-cut-releases">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,9 +24,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script>
 document.documentElement.classList.add("js");
-// the GitHub address is filled in by the server from LOXENCUT_REPO_URL; without one, the GitHub buttons stay hidden
-(function () { const r = document.documentElement.dataset.repo || "";
-  if (/^https:\/\/[^\s"<>]+$/.test(r)) document.documentElement.classList.add("has-repo"); })();
 </script>
 <script src="assets/loxenwave.js?v=2" defer></script>
 <script src="assets/loxenfx.js?v=3" defer></script>
@@ -53,8 +50,8 @@ svg{width:18px;height:18px;flex:none;fill:currentColor}
 :focus-visible{outline:2px solid var(--blue-hi);outline-offset:3px}
 .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
 header.nav,main,footer.site{position:relative;z-index:1}
-html:not(.has-repo) .gh{display:none!important}
-html.has-repo .no-gh{display:none!important}
+
+
 
 /* Apple-style glass: a light frost that blurs and brightens what is behind it, a bright hairline along the top
    edge where light catches it, and a faint sheen. Used only where Apple uses glass: bars, pills, panels on top. */
@@ -453,7 +450,6 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
 <header class="nav" id="nav"><div class="bar">
   <a class="brand" href="./" aria-label="LOXEN CUT home"><img src="brand/lx2-logo.svg" alt="LOXEN CUT"></a>
   <nav aria-label="Sections"><a href="#output">Clips</a><a href="#features">Features</a><a href="#studio">Studio</a><a href="#autopilot">Live</a><a href="#buy">Pricing</a><a href="#install">Install</a><a href="#faq">FAQ</a></nav>
-  <a class="textlink gh" href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">GitHub</a>
   <a class="btn primary" href="#install">Download</a>
 </div></header>
 
@@ -585,13 +581,13 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
     <a class="btn" data-get="mac" href="https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-mac.dmg"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>Download for Mac</a>
     <a class="btn" data-get="win" href="https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-Setup-windows.exe"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>Download for Windows</a>
   </div>
-  <p class="dlnote reveal">Try it free with 2 videos, then <a href="#buy">$29.99 a year or $59.99 for life</a>. Macs with Apple chips (M1 to M6), and Windows 10 and 11 (64-bit). <a href="https://github.com/harshxt01/loxen-cut-releases/releases" rel="noopener">All versions</a></p>
+  <p class="dlnote reveal">Try it free with 2 videos, then <a href="#buy">$29.99 a year or $59.99 for life</a>. Macs with Apple chips (M1 to M6), and Windows 10 and 11 (64-bit).</p>
   <div class="tabs reveal" role="tablist" aria-label="Your computer" id="ostabs">
     <button class="tab" role="tab" data-os="mac" aria-selected="true">Mac</button><button class="tab" role="tab" data-os="win" aria-selected="false">Windows</button></div>
   <div class="install">
     <div class="steps reveal" id="steps">
       <div class="step"><span class="n">01</span><b>Download</b>
-        <p data-os="mac">Press Download for Mac. If Safari asks, allow downloads from github.com.</p>
+        <p data-os="mac">Press Download for Mac. If Safari asks, allow the download.</p>
         <p data-os="win" hidden>Press Download for Windows. If your browser says the file isn't commonly downloaded, open the menu next to it and choose Keep.</p></div>
       <div class="step"><span class="n">02</span><b>Install</b>
         <p data-os="mac">Open LOXEN-CUT-mac.dmg and drag LOXEN CUT into Applications.</p>
@@ -653,7 +649,7 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
   <img class="mark reveal" src="brand/lx2-mark.svg" alt="" aria-hidden="true">
   <h2 class="reveal metal">Built with intent.</h2>
   <p class="sub reveal">Hand it the stream. Keep the moments.</p>
-  <div class="row reveal"><a class="btn primary" href="#install">Get LOXEN CUT <svg class="go" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a><a class="btn gh" href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">View on GitHub</a></div>
+  <div class="row reveal"><a class="btn primary" href="#install">Get LOXEN CUT <svg class="go" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a></div>
 </div></section>
 </main>
 
@@ -662,7 +658,7 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
     <div class="fbrand"><a href="./" aria-label="LOXEN CUT home"><img src="brand/lx2-logo.svg" alt="LOXEN CUT" width="160" height="28"></a>
       <p>An AI clipping studio by LOXEN. It runs on your own computer and turns Twitch, Kick and YouTube streams into captioned vertical clips.</p></div>
     <div><h4>Product</h4><ul><li><a href="#output">Clips</a></li><li><a href="#features">Features</a></li><li><a href="#live">Live clipping</a></li><li><a href="#for">Who it's for</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-    <div><h4>Get it</h4><ul><li><a href="#buy">Pricing</a></li><li><a href="#install">Install</a></li><li><a href="https://discord.gg/zdYPRv99kn" rel="noopener">Discord</a></li><li><a href="#install">What you need</a></li><li class="gh"><a href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">GitHub</a></li></ul></div>
+    <div><h4>Get it</h4><ul><li><a href="#buy">Pricing</a></li><li><a href="#install">Install</a></li><li><a href="https://discord.gg/zdYPRv99kn" rel="noopener">Discord</a></li><li><a href="#install">What you need</a></li></ul></div>
     <div><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="acceptable-use.html">Acceptable Use</a></li></ul></div>
   </div>
   <div class="fbottom"><span>© <span class="fy"></span> LOXEN. Built on PeakCut, MIT licence.</span><span class="tag">Built with intent.</span></div>
