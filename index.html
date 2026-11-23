@@ -388,12 +388,71 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
   .step{grid-template-columns:1fr;padding:18px}.step .n{grid-row:auto}.code{grid-column:1}
 }
 @media (prefers-reduced-motion:reduce){.window{transform:none!important}*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal,.js .passes div{opacity:1;transform:none;filter:none}}
+/* pricing (1.1.0) */
+#buy .plans{display:grid;grid-template-columns:repeat(2,minmax(0,360px));gap:22px;justify-content:center;margin:46px auto 36px;text-align:left}
+.plan{position:relative;padding:30px 28px 28px;border-radius:26px;border:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 30px 80px -40px rgba(0,0,0,1)}
+.plan.best{border-color:var(--blue-line);background:radial-gradient(120% 70% at 50% 0%,rgba(47,123,255,.14),transparent 70%),linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.plan h3{margin:0;font-size:18px;font-weight:600;color:var(--white)}
+.plan .tag{position:absolute;top:18px;right:18px;padding:4px 10px;border-radius:999px;font-size:12px;color:var(--blue-hi);background:var(--blue-soft);border:1px solid var(--blue-line)}
+.plan .price{display:flex;align-items:baseline;gap:8px;margin:14px 0 6px}
+.plan .price b{font-size:46px;font-weight:600;letter-spacing:-.04em;color:var(--white)}
+.plan .price span{color:var(--slate);font-size:16px}
+.plan .pnote{color:var(--slate);margin:0 0 18px;font-weight:300}
+.plan ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.plan li{display:flex;gap:10px;align-items:flex-start;color:var(--silver);font-size:15px}
+.plan li svg{width:16px;height:16px;flex:none;margin-top:3px;fill:var(--blue-hi)}
+.plan .btn{width:100%}
+#buy .how{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;max-width:1040px;margin:0 auto 26px;padding:0;text-align:left}
+#buy .how li{counter-increment:s;padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+#buy .how li::before{content:counter(s);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;margin-bottom:10px;font-size:13px;color:var(--blue-hi);border:1px solid var(--blue-line)}
+#buy .how b{display:block;color:var(--white);margin-bottom:4px}
+#buy .how span{color:var(--slate);font-size:14px;font-weight:300;line-height:1.5}
+#buy .how a{color:var(--silver)}
+@media (max-width:860px){#buy .plans{grid-template-columns:1fr}#buy .how{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){#buy .how{grid-template-columns:1fr}}
+/* launch offer */
+.plan .tag.offer{left:18px;right:auto;color:#fff;background:linear-gradient(180deg,rgba(47,123,255,.55),rgba(47,123,255,.3));border-color:rgba(110,168,255,.6);box-shadow:0 6px 20px -6px rgba(47,123,255,.6)}
+.plan .tag.offer~h3{margin-top:26px}
+.plan .price s{color:var(--slate-2);font-size:20px;font-weight:400;margin-right:4px}
+.codechip{font:600 13px/1 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.06em;color:var(--white);padding:5px 8px;border-radius:8px;cursor:pointer;
+  border:1px dashed rgba(255,255,255,.35);background:rgba(255,255,255,.05);transition:background-color .2s,border-color .2s}
+.codechip:hover,.codechip.copied{border-color:var(--blue-hi);background:var(--blue-soft)}
+.promo{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,0);backdrop-filter:blur(0);
+  transition:background-color .3s var(--ease),backdrop-filter .3s var(--ease)}
+.promo.on{background:rgba(0,0,0,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.promo-card{position:relative;overflow:hidden;width:min(420px,100%);padding:34px 30px 22px;border-radius:28px;text-align:center;
+  background:linear-gradient(180deg,#121317,#08090B);border:1px solid var(--blue-line);
+  box-shadow:0 40px 120px -30px rgba(47,123,255,.45),inset 0 1px 0 rgba(255,255,255,.1);
+  opacity:0;transform:translateY(18px) scale(.96);transition:opacity .35s var(--ease),transform .45s cubic-bezier(.2,.9,.25,1.2)}
+.promo.on .promo-card{opacity:1;transform:none}
+.promo-glow{position:absolute;inset:-45% -20% auto;height:280px;background:radial-gradient(closest-side,rgba(47,123,255,.5),transparent);pointer-events:none;animation:promoglow 5s ease-in-out infinite}
+@keyframes promoglow{50%{opacity:.55;transform:scale(1.1)}}
+.promo-card>*:not(.promo-glow):not(.promo-x){position:relative}
+.promo-x{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.06);color:var(--silver);cursor:pointer;display:grid;place-items:center}
+.promo-x svg{width:16px;height:16px;fill:currentColor}
+.promo-mark{display:block;margin:0 auto 14px;width:52px;height:52px;filter:drop-shadow(0 8px 24px rgba(47,123,255,.5))}
+.promo-kicker{margin:0;color:var(--blue-hi);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.promo h3{margin:10px 0 4px;font-size:30px;letter-spacing:-.03em;color:var(--white);font-weight:600}
+.promo h3 b{background:linear-gradient(180deg,#FFFFFF,#9EC3FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.promo-price{margin:0 0 18px;color:var(--silver)}.promo-price s{color:var(--slate-2)}.promo-price b{color:var(--white);font-size:20px}
+.promo-sub{margin:0 0 10px;color:var(--slate);font-size:14px;font-weight:300}
+.promo-code{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:14px 16px;margin:0 0 14px;border-radius:14px;cursor:pointer;
+  border:1px dashed rgba(110,168,255,.55);background:rgba(47,123,255,.08);color:var(--white);transition:background-color .2s,transform .15s}
+.promo-code span{font:700 20px/1 ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.12em}
+.promo-code em{font-style:normal;font-size:13px;color:var(--blue-hi)}
+.promo-code:hover{background:rgba(47,123,255,.16)}.promo-code:active{transform:scale(.98)}
+.promo-code.copied{border-style:solid;border-color:var(--blue-hi)}
+.promo-go{width:100%}
+.promo-later{margin-top:10px;background:none;border:0;color:var(--slate);font:inherit;font-size:14px;cursor:pointer;padding:6px}
+.promo-later:hover{color:var(--silver)}
+@media (prefers-reduced-motion:reduce){.promo-glow{animation:none}.promo-card{transition:none}}
 </style>
 </head>
 <body>
 <header class="nav" id="nav"><div class="bar">
   <a class="brand" href="./" aria-label="LOXEN CUT home"><img src="brand/lx2-logo.svg" alt="LOXEN CUT"></a>
-  <nav aria-label="Sections"><a href="#output">Clips</a><a href="#features">Features</a><a href="#studio">Studio</a><a href="#autopilot">Live</a><a href="#install">Install</a><a href="#faq">FAQ</a></nav>
+  <nav aria-label="Sections"><a href="#output">Clips</a><a href="#features">Features</a><a href="#studio">Studio</a><a href="#autopilot">Live</a><a href="#buy">Pricing</a><a href="#install">Install</a><a href="#faq">FAQ</a></nav>
   <a class="textlink gh" href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">GitHub</a>
   <a class="btn primary" href="#install">Download</a>
 </div></header>
@@ -526,7 +585,7 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
     <a class="btn" data-get="mac" href="https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-mac.dmg"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>Download for Mac</a>
     <a class="btn" data-get="win" href="https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-Setup-windows.exe"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg>Download for Windows</a>
   </div>
-  <p class="dlnote reveal">Free. Macs with Apple chips (M1 to M4), and Windows 10 and 11 (64-bit). <a href="https://github.com/harshxt01/loxen-cut-releases/releases" rel="noopener">All versions</a></p>
+  <p class="dlnote reveal">Try it free with 2 videos, then <a href="#buy">$29.99 a year or $59.99 for life</a>. Macs with Apple chips (M1 to M6), and Windows 10 and 11 (64-bit). <a href="https://github.com/harshxt01/loxen-cut-releases/releases" rel="noopener">All versions</a></p>
   <div class="tabs reveal" role="tablist" aria-label="Your computer" id="ostabs">
     <button class="tab" role="tab" data-os="mac" aria-selected="true">Mac</button><button class="tab" role="tab" data-os="win" aria-selected="false">Windows</button></div>
   <div class="install">
@@ -540,8 +599,8 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
       <div class="step"><span class="n">03</span><b>Open it</b>
         <p data-os="mac">Open LOXEN CUT from Applications. The first time, if macOS says it can't check the app, go to System Settings, Privacy &amp; Security, and choose Open Anyway.</p>
         <p data-os="win" hidden>LOXEN CUT opens in your browser at the end of the install. Next time, open it from the Start menu or the desktop.</p></div>
-      <div class="step"><span class="n">04</span><b>Sign in and add your AI key</b>
-        <p>Create your LOXEN account, then paste an AI key under Settings, AI. A free Gemini key takes a minute at aistudio.google.com/apikey. The first start downloads the speech model (about 480 MB, once).</p></div>
+      <div class="step"><span class="n">04</span><b>Activate, and add your AI key</b>
+        <p>Create your LOXEN account, then start the free trial (2 videos) or enter your activation code. Paste an AI key under Settings, AI: a free Gemini key takes a minute at aistudio.google.com/apikey. The first start downloads the speech model (about 480 MB, once).</p></div>
     </div>
     <aside class="need reveal" style="--d:.1s"><h3>What you need</h3>
       <ul>
@@ -554,10 +613,33 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
   </div>
 </div></section>
 
+<section id="buy" class="center"><div class="wrap">
+  <p class="eyebrow reveal">Pricing</p>
+  <h2 class="reveal">Try it free. <em>Keep it for good.</em></h2>
+  <p class="sub reveal">Start with 2 free videos and every feature. When you're sure, pick a plan.</p>
+  <div class="plans reveal">
+    <article class="plan"><span class="tag offer">Launch: 40% off</span><h3>Yearly</h3><p class="price"><s>$29.99</s><b>$17.99</b><span>a year</span></p>
+      <p class="pnote">With code <button class="codechip" type="button" data-copy="LOXENLAUNCH">LOXENLAUNCH</button> on the yearly plan. Everything in LOXEN CUT for 12 months.</p><ul><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Unlimited videos and live recordings</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>The AI editor: hooks, titles, hashtags</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>YouTube Shorts and Instagram Reels modes</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Facecam split, two speakers, 10 caption styles</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Posting to YouTube, Instagram and TikTok</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Every update while your plan lasts</li></ul>
+      <a class="btn" href="https://discord.gg/zdYPRv99kn" target="_blank" rel="noopener">Buy yearly on Discord</a></article>
+    <article class="plan best"><span class="tag">Best value</span><h3>Lifetime</h3><p class="price"><b>$59.99</b><span>once</span></p>
+      <p class="pnote">Pay once, keep it, with every update.</p><ul><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Unlimited videos and live recordings</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>The AI editor: hooks, titles, hashtags</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>YouTube Shorts and Instagram Reels modes</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Facecam split, two speakers, 10 caption styles</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Posting to YouTube, Instagram and TikTok</li><li><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Every update, for good</li></ul>
+      <a class="btn primary" href="https://discord.gg/zdYPRv99kn" target="_blank" rel="noopener">Buy lifetime on Discord</a></article>
+  </div>
+  <ol class="how reveal">
+    <li><b>Try it</b><span>Download LOXEN CUT and start the free trial: 2 videos, every feature.</span></li>
+    <li><b>Open a ticket</b><span>Join the <a href="https://discord.gg/zdYPRv99kn" target="_blank" rel="noopener">LOXEN Discord</a> and open a ticket to buy your plan.</span></li>
+    <li><b>Get your code</b><span>After paying you receive an activation code, like LOXEN-XXXX-XXXX-XXXX.</span></li>
+    <li><b>Activate</b><span>Enter it on LOXEN CUT's sign-in screen, or in Settings, Plan. Done.</span></li>
+  </ol>
+  <p class="dlnote reveal">Prices in US dollars. One account works on one computer at a time. All sales are final: no refunds after purchase, so please use the free videos first. <a href="terms.html">Terms</a></p>
+</div></section>
+
 <section id="faq"><div class="wrap faqgrid">
   <div class="reveal"><p class="eyebrow">FAQ</p><h2>Questions, <em>answered.</em></h2><p class="sub">What people ask before their first stream goes through LOXEN CUT.</p></div>
   <div class="reveal" style="--d:.1s">
-    <details open><summary>Is it free?</summary><p>LOXEN CUT has no subscription and no per-clip fees. It runs on your own computer. If you use an AI service, you pay that service directly for what you use; without a key it still makes clips.</p></details>
+    <details open><summary>How much does it cost?</summary><p>Try it free with 2 videos, every feature included. Then it's $29.99 a year, or $59.99 once for life. No per-clip fees: it runs on your own computer, and if you use an AI service you pay that service directly for what you use. <a href="#buy">See plans</a>.</p></details>
+    <details><summary>How do I buy it?</summary><p>Join the <a href="https://discord.gg/zdYPRv99kn" rel="noopener" target="_blank">LOXEN Discord</a> and open a ticket. Once you've paid, you get an activation code. Enter it in LOXEN CUT (on the sign-in screen, or Settings, Plan) and it's activated. All sales are final: no refunds, so try the free videos first.</p></details>
+    <details><summary>Can I use it on more than one computer?</summary><p>One account works on one computer at a time. Signing in on another computer signs the first one out, so you can move it to a new computer whenever you like.</p></details>
     <details><summary>Which AI does it use?</summary><p>Your own. Add a key for Gemini, OpenAI, Grok, Claude or OpenRouter, or point it at a model on your own computer with Ollama. With Gemini it watches each shortlisted moment with sound; other services see a few still frames.</p></details>
     <details><summary>Do my videos leave my computer?</summary><p>No. Videos, clips and the speech-to-text all stay on your computer. Your AI service sees the transcript and short low-resolution previews of the few moments it is choosing between. Clips only go to YouTube, Instagram or TikTok if you post them.</p></details>
     <details><summary>Which videos work best?</summary><p>Anything with people talking and reacting: live streams, gaming VODs, podcasts, interviews. Links can be from YouTube, Twitch or Kick, or you can use a file.</p></details>
@@ -580,7 +662,7 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
     <div class="fbrand"><a href="./" aria-label="LOXEN CUT home"><img src="brand/lx2-logo.svg" alt="LOXEN CUT" width="160" height="28"></a>
       <p>An AI clipping studio by LOXEN. It runs on your own computer and turns Twitch, Kick and YouTube streams into captioned vertical clips.</p></div>
     <div><h4>Product</h4><ul><li><a href="#output">Clips</a></li><li><a href="#features">Features</a></li><li><a href="#live">Live clipping</a></li><li><a href="#for">Who it's for</a></li><li><a href="#faq">FAQ</a></li></ul></div>
-    <div><h4>Get it</h4><ul><li><a href="#install">Install</a></li><li><a href="#install">What you need</a></li><li class="gh"><a href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">GitHub</a></li></ul></div>
+    <div><h4>Get it</h4><ul><li><a href="#buy">Pricing</a></li><li><a href="#install">Install</a></li><li><a href="https://discord.gg/zdYPRv99kn" rel="noopener">Discord</a></li><li><a href="#install">What you need</a></li><li class="gh"><a href="https://github.com/harshxt01/loxen-cut-releases" rel="noopener">GitHub</a></li></ul></div>
     <div><h4>Legal</h4><ul><li><a href="terms.html">Terms of Service</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="acceptable-use.html">Acceptable Use</a></li></ul></div>
   </div>
   <div class="fbottom"><span>© <span class="fy"></span> LOXEN. Built on PeakCut, MIT licence.</span><span class="tag">Built with intent.</span></div>
@@ -789,6 +871,48 @@ $$("#steps .code").forEach(c => {
   });
   c.appendChild(b);
 });
+</script>
+<div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoh" hidden>
+  <div class="promo-card">
+    <button class="promo-x" type="button" data-promo-close aria-label="Close">
+      <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+    <div class="promo-glow" aria-hidden="true"></div>
+    <img class="promo-mark" src="brand/lx2-icon.svg" alt="" width="52" height="52">
+    <p class="promo-kicker">Launch offer</p>
+    <h3 id="promoh"><b>40% off</b> the yearly plan</h3>
+    <p class="promo-price"><s>$29.99</s> <b>$17.99</b> a year</p>
+    <p class="promo-sub">Use this code when you buy on our Discord:</p>
+    <button class="promo-code" type="button" data-copy="LOXENLAUNCH"><span>LOXENLAUNCH</span><em>Copy</em></button>
+    <a class="btn primary promo-go" href="https://discord.gg/zdYPRv99kn" target="_blank" rel="noopener">Claim it on Discord</a>
+    <button class="promo-later" type="button" data-promo-close>Maybe later</button>
+  </div>
+</div>
+<script>
+/* the launch offer: once per visitor (again after a week), a few seconds in or once they scroll; copy the code in one tap */
+(() => {
+  const box = document.getElementById("promo"), KEY = "loxen_promo_seen";
+  let seen = 0;
+  try { seen = Number(localStorage.getItem(KEY) || 0); } catch (e) {}
+  const open = () => {
+    if (!box.hidden || Date.now() - seen < 7 * 864e5) return;
+    box.hidden = false; requestAnimationFrame(() => box.classList.add("on"));
+    try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+    seen = Date.now();
+    box.querySelector(".promo-go").focus({preventScroll: true});
+  };
+  const close = () => { box.classList.remove("on"); setTimeout(() => { box.hidden = true; }, 300); };
+  setTimeout(open, 4500);
+  addEventListener("scroll", function once() { if (scrollY > innerHeight * 0.9) { removeEventListener("scroll", once); open(); } }, {passive: true});
+  box.addEventListener("click", e => { if (e.target === box || e.target.closest("[data-promo-close]")) close(); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !box.hidden) close(); });
+  document.addEventListener("click", async e => {
+    const b = e.target.closest("[data-copy]"); if (!b) return;
+    try { await navigator.clipboard.writeText(b.dataset.copy); } catch (err) {}
+    b.classList.add("copied");
+    const em = b.querySelector("em"); if (em) em.textContent = "Copied";
+    setTimeout(() => { b.classList.remove("copied"); if (em) em.textContent = "Copy"; }, 1800);
+  });
+})();
 </script>
 </body>
 </html>

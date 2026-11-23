@@ -24,6 +24,8 @@ uniform float T;     // time in seconds
 uniform vec2 M;      // mouse, -1..1, eased
 uniform float H;     // horizon height, 0..1 from the bottom
 uniform float S;     // strength
+uniform float V;     // violet: 0 = the website's blue aurora, 1 = the app's violet one
+uniform float G;     // gold: the app's golden-hour horizon (champagne glow, warm aurora, a silver rim)
 
 float hash(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }
 float noise(vec2 p){
@@ -55,7 +57,11 @@ void main(){
 
   vec3 deep = vec3(0.02, 0.05, 0.16);                   // midnight navy
   vec3 blue = vec3(0.10, 0.42, 1.00);                   // LOXEN blue
-  vec3 cyan = vec3(0.45, 0.78, 1.00);
+  vec3 cyan = mix(vec3(0.45, 0.78, 1.00), vec3(0.72, 0.52, 1.00), V);
+  blue = mix(blue, vec3(0.42, 0.26, 1.00), V * 0.55);
+  blue = mix(blue, vec3(1.00, 0.66, 0.30), G * 0.85);
+  cyan = mix(cyan, vec3(1.00, 0.86, 0.58), G);
+  deep = mix(deep, vec3(0.13, 0.06, 0.02), G);
   vec3 silver = vec3(0.86, 0.90, 0.97);
 
   vec3 col = vec3(0.0);
@@ -98,7 +104,7 @@ void main(){
 }`;
 
   function mount(el, opts) {
-    opts = Object.assign({ horizon: 0.36, strength: 1 }, opts || {});
+    opts = Object.assign({ horizon: 0.36, strength: 1, violet: 0, gold: 0 }, opts || {});
     const canvas = document.createElement("canvas");
     canvas.setAttribute("aria-hidden", "true");
     canvas.style.cssText = "position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.8s cubic-bezier(.2,.7,.2,1);pointer-events:none";
@@ -125,7 +131,7 @@ void main(){
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
     const U = {};
-    ["R", "T", "M", "H", "S"].forEach(k => U[k] = gl.getUniformLocation(prog, k));
+    ["R", "T", "M", "H", "S", "V", "G"].forEach(k => U[k] = gl.getUniformLocation(prog, k));
     gl.clearColor(0, 0, 0, 0);
 
     if (getComputedStyle(el).position === "static") el.style.position = "relative";
@@ -150,6 +156,8 @@ void main(){
       // on a tall phone screen the horizon sits a little lower, below the link box
       gl.uniform1f(U.H, innerWidth < 760 ? opts.horizon * 0.62 : opts.horizon);
       gl.uniform1f(U.S, opts.strength);
+      gl.uniform1f(U.V, opts.violet);
+      gl.uniform1f(U.G, opts.gold);
       gl.drawArrays(gl.TRIANGLES, 0, 3);
       canvas.style.opacity = "1";
     }
