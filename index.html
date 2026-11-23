@@ -444,6 +444,94 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
 .promo-later{margin-top:10px;background:none;border:0;color:var(--slate);font:inherit;font-size:14px;cursor:pointer;padding:6px}
 .promo-later:hover{color:var(--silver)}
 @media (prefers-reduced-motion:reduce){.promo-glow{animation:none}.promo-card{transition:none}}
+/* ---------- caption style playground */
+.tryout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:44px;align-items:center;max-width:860px;margin:46px auto 0;text-align:left;position:relative;z-index:1}
+.trylead{margin:0 0 14px;color:var(--white);font-weight:500}
+.tryout .styles{justify-content:flex-start;margin:0;max-width:none}
+.sty{height:36px;padding:0 16px;border-radius:999px;border:1px solid var(--line-2);background:rgba(255,255,255,.02);color:var(--slate);font:inherit;font-size:14px;cursor:pointer;
+  transition:color .2s,border-color .2s,background-color .2s,transform .15s}
+.sty:hover{color:var(--white);border-color:rgba(255,255,255,.28)}
+.sty:active{transform:scale(.96)}
+.sty[aria-pressed=true]{color:#fff;border-color:var(--blue-line);background:var(--blue-soft);box-shadow:0 0 22px -8px rgba(47,123,255,.8)}
+.trynote{margin:16px 0 0;color:var(--slate);font-size:15px;font-weight:300;min-height:3em}
+.tryphone{position:relative;aspect-ratio:9/16;border-radius:30px;overflow:hidden;border:1px solid rgba(255,255,255,.16);background:#0B0D12;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 40px 90px -30px rgba(0,0,0,1),0 0 70px -30px rgba(47,123,255,.6)}
+.tp-scene{position:absolute;inset:0;background:linear-gradient(180deg,#1B2B4A 0%,#34507E 42%,#C98B5A 70%,#2A1E18 71%,#120E0C 100%)}
+.tp-sun{position:absolute;left:58%;top:52%;width:64px;height:64px;border-radius:50%;background:radial-gradient(circle,#FFE2B0,#F59E5B 60%,transparent 62%);filter:blur(.5px)}
+.tp-hill{position:absolute;bottom:26%;width:120%;height:30%;border-radius:50% 50% 0 0;background:#1A1512}
+.tp-hill.a{left:-40%}.tp-hill.b{left:30%;bottom:22%;background:#0F0C0A}
+.tp-cam{position:absolute;left:0;right:0;top:0;height:42%;background:radial-gradient(60% 70% at 50% 60%,#3A3F4A,#16181D);border-bottom:2px solid rgba(255,255,255,.12)}
+.tp-cam::after{content:"";position:absolute;left:50%;top:58%;width:64px;height:64px;margin:-32px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#C99A7C,#8A5E46 70%);
+  box-shadow:0 46px 0 -6px #2A3140}
+.tp-hook{position:absolute;left:10%;right:10%;top:46%;padding:6px 8px;border-radius:8px;background:#fff;color:#111;font:800 11px/1.2 var(--display);text-align:center;z-index:2}
+.tp-cap{position:absolute;left:6%;right:6%;top:62%;text-align:center;z-index:2;font-family:var(--display);line-height:1.15}
+.tp-cap i{font-style:normal;display:inline-block}
+.tp-bar{position:absolute;left:0;right:0;top:0;height:4px;background:rgba(0,0,0,.5);z-index:3}
+.tp-bar b{display:block;height:100%;width:0;background:#fff;animation:tpbar 6s linear infinite}
+@keyframes tpbar{to{width:100%}}
+@keyframes tppop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.18);opacity:1}100%{transform:scale(1)}}
+/* each style */
+.tp-cap[data-sty=bounce] i{font-weight:900;font-size:26px;color:#fff;-webkit-text-stroke:1.2px #000;text-shadow:0 3px 0 #000}
+.tp-cap[data-sty=bounce] i.on{color:#FFE000;animation:tppop .35s ease-out}
+.tp-cap[data-sty=hype] i{font-weight:900;font-size:30px;text-transform:uppercase;color:#fff;letter-spacing:-.02em;text-shadow:0 4px 0 #000,0 0 14px rgba(0,0,0,.6)}
+.tp-cap[data-sty=hype] i.on{color:#3CFF6B;animation:tppop .3s ease-out}
+.tp-cap[data-sty=clean] i{font-weight:600;font-size:15px;color:#fff;text-transform:lowercase;text-shadow:0 1px 6px rgba(0,0,0,.9)}
+.tp-cap[data-sty=clean] i.past,.tp-cap[data-sty=clean] i.on{opacity:1}.tp-cap[data-sty=clean] i:not(.on):not(.past){opacity:.55}
+.tp-cap[data-sty=box] i{font-weight:800;font-size:22px;color:#111;background:#fff;padding:2px 8px;border-radius:6px;animation:tppop .3s ease-out}
+.tp-cap[data-sty=spotlight] i{font-weight:800;font-size:15px;color:rgba(255,255,255,.75);padding:1px 3px;border-radius:4px;text-shadow:0 1px 4px #000;transition:background-color .2s,color .2s}
+.tp-cap[data-sty=spotlight] i.on{background:#2F7BFF;color:#fff;text-shadow:none}
+.tp-cap[data-sty=karaoke] i{font-weight:900;font-size:15px;color:#fff;-webkit-text-stroke:.6px #000}
+.tp-cap[data-sty=karaoke] i.past,.tp-cap[data-sty=karaoke] i.on{color:#FF4FD8}
+.tp-cap[data-sty=cinema]{top:auto;bottom:12%}
+.tp-cap[data-sty=cinema] i{font:italic 500 15px/1.3 Georgia,"Times New Roman",serif;color:#F3E9D8;text-transform:lowercase;letter-spacing:.02em;text-shadow:0 1px 6px #000}
+.tp-cap[data-sty=cinema] i:not(.on):not(.past){opacity:.35}
+.tp-cap[data-sty=comic] i{font-weight:900;font-size:27px;color:#FFE94D;-webkit-text-stroke:1.4px #000;text-shadow:3px 3px 0 #000;transform:rotate(-4deg);font-family:"Comic Sans MS","Chalkboard SE",var(--display)}
+.tp-cap[data-sty=comic] i.on{animation:tppop .3s ease-out}
+.tp-cap[data-sty=neon] i{font-weight:800;font-size:25px;color:#fff;text-shadow:0 0 6px #22E3FF,0 0 16px #22E3FF,0 0 30px #00A3FF}
+.tp-cap[data-sty=neon] i.on{text-shadow:0 0 6px #FF4FD8,0 0 16px #FF4FD8,0 0 30px #C21AFF;animation:tppop .3s ease-out}
+.tp-cap[data-sty=subtitle]{top:auto;bottom:8%;left:4%;right:4%;background:rgba(0,0,0,.72);padding:6px 8px;border-radius:6px}
+.tp-cap[data-sty=subtitle] i{font-weight:500;font-size:13px;color:#fff;text-transform:lowercase}
+.tp-cap[data-sty=subtitle] i:first-child{text-transform:capitalize}
+@media (max-width:760px){.tryout{grid-template-columns:1fr;gap:28px;text-align:center}.tryout .styles{justify-content:center}.tryphone{width:210px;margin:0 auto}}
+
+/* ---------- the "Try it free" bar */
+.trybar{position:fixed;left:50%;bottom:20px;z-index:90;display:flex;align-items:center;gap:14px;padding:10px 10px 10px 14px;border-radius:999px;width:max-content;max-width:calc(100% - 120px);
+  background:rgba(18,19,23,.78);-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 60px -20px rgba(0,0,0,1),0 0 40px -18px rgba(47,123,255,.6);
+  transform:translate(-50%,140%);opacity:0;transition:transform .45s cubic-bezier(.2,.9,.25,1.1),opacity .3s}
+.trybar.on{transform:translate(-50%,0);opacity:1}
+.trybar img{flex:none;border-radius:8px}
+.trybar p{margin:0;line-height:1.25;white-space:nowrap}
+.trybar p b{display:block;color:var(--white);font-size:14px;font-weight:600}
+.trybar p span{color:var(--slate);font-size:13px}
+.trybar .btn.sm{height:40px;padding:0 18px;font-size:14px;flex:none}
+.trybar-x{flex:none;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.06);color:var(--slate);cursor:pointer;display:grid;place-items:center}
+.trybar-x:hover{color:var(--white);background:rgba(255,255,255,.12)}
+.trybar-x svg{width:14px;height:14px;fill:currentColor}
+@media (max-width:640px){.trybar{left:12px;right:84px;max-width:none;width:auto;padding:8px;gap:8px;transform:translateY(140%)}.trybar.on{transform:none}.trybar p,.trybar img{display:none}.trybar .btn.sm{flex:1;height:42px}}
+
+/* ---------- the help bubble */
+.helpme{position:fixed;right:20px;bottom:20px;z-index:95}
+.help-btn{position:relative;width:56px;height:56px;border-radius:50%;cursor:pointer;display:grid;place-items:center;color:#fff;
+  border:1px solid var(--blue-line);background:radial-gradient(circle at 35% 30%,#4D8DFF,#1D57D6 70%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 16px 40px -12px rgba(47,123,255,.8);transition:transform .25s cubic-bezier(.2,.9,.25,1.2)}
+.help-btn:hover{transform:scale(1.06)}.help-btn:active{transform:scale(.95)}
+.help-btn svg{width:26px;height:26px;fill:currentColor;position:absolute;transition:opacity .2s,transform .3s}
+.help-btn .i-close{opacity:0;transform:rotate(-90deg)}
+.helpme.open .help-btn .i-open{opacity:0;transform:rotate(90deg)}.helpme.open .help-btn .i-close{opacity:1;transform:none}
+.helpme.hello:not(.open) .help-btn::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(110,168,255,.6);animation:hello 2.4s ease-out 3}
+@keyframes hello{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
+.help-card{position:absolute;right:0;bottom:70px;width:min(320px,calc(100vw - 40px));padding:16px;border-radius:22px;
+  background:rgba(18,19,23,.92);-webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 30px 80px -20px rgba(0,0,0,1);transform-origin:100% 100%;animation:helpin .3s cubic-bezier(.2,.9,.25,1.1)}
+@keyframes helpin{from{opacity:0;transform:translateY(10px) scale(.95)}}
+.help-h{margin:2px 4px 10px;color:var(--white);font-weight:600;font-size:16px}
+.help-card a{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;color:var(--silver);text-decoration:none;transition:background-color .2s}
+.help-card a:hover{background:rgba(255,255,255,.06)}
+.help-card a svg{flex:none;width:34px;height:34px;padding:8px;border-radius:10px;fill:var(--blue-hi);background:var(--blue-soft);border:1px solid var(--blue-line)}
+.help-card a span{font-size:13px;color:var(--slate);line-height:1.35}
+.help-card a b{display:block;color:var(--white);font-size:14px;font-weight:500}
+@media (prefers-reduced-motion:reduce){.trybar,.help-btn,.help-btn svg{transition:none}.help-card,.helpme.hello .help-btn::after,.tp-bar b,.tp-cap i{animation:none!important}}
 </style>
 </head>
 <body>
@@ -489,7 +577,19 @@ footer.site .tag{font-family:var(--display);font-weight:600;letter-spacing:.3em;
       <figure class="mid"><div class="phone"><video src="brand/style-hype.mp4" poster="brand/style-hype.jpg" autoplay muted loop playsinline preload="metadata"></video></div><figcaption><b>Hype</b>bold, for the big moments</figcaption></figure>
       <figure><div class="phone"><video src="brand/style-clean.mp4" poster="brand/style-clean.jpg" autoplay muted loop playsinline preload="metadata"></video></div><figcaption><b>Clean</b>quiet, for talk and podcasts</figcaption></figure>
     </div>
-    <div class="styles" aria-label="All ten caption styles"><span>Bounce</span><span>Hype</span><span>Clean</span><span>Box</span><span>Spotlight</span><span>Karaoke</span><span>Cinema</span><span>Comic</span><span>Neon</span><span>Subtitle</span></div>
+    <div class="tryout">
+      <div class="trypick">
+        <p class="trylead">Try them: tap a style.</p>
+        <div class="styles" role="group" aria-label="All ten caption styles"><button type="button" class="sty" data-sty="bounce" aria-pressed="true">Bounce</button><button type="button" class="sty" data-sty="hype" aria-pressed="false">Hype</button><button type="button" class="sty" data-sty="clean" aria-pressed="false">Clean</button><button type="button" class="sty" data-sty="box" aria-pressed="false">Box</button><button type="button" class="sty" data-sty="spotlight" aria-pressed="false">Spotlight</button><button type="button" class="sty" data-sty="karaoke" aria-pressed="false">Karaoke</button><button type="button" class="sty" data-sty="cinema" aria-pressed="false">Cinema</button><button type="button" class="sty" data-sty="comic" aria-pressed="false">Comic</button><button type="button" class="sty" data-sty="neon" aria-pressed="false">Neon</button><button type="button" class="sty" data-sty="subtitle" aria-pressed="false">Subtitle</button></div>
+        <p class="trynote" id="trynote">Energetic, word by word: each word pops in as it's said.</p>
+      </div>
+      <div class="tryphone" aria-hidden="true">
+        <div class="tp-scene"><i class="tp-sun"></i><i class="tp-hill a"></i><i class="tp-hill b"></i><i class="tp-cam"></i></div>
+        <span class="tp-hook">HE ACTUALLY PULLED IT OFF 😭</span>
+        <div class="tp-cap" id="tpcap" data-sty="bounce"></div>
+        <i class="tp-bar"><b></b></i>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -908,6 +1008,90 @@ $$("#steps .code").forEach(c => {
     const em = b.querySelector("em"); if (em) em.textContent = "Copied";
     setTimeout(() => { b.classList.remove("copied"); if (em) em.textContent = "Copy"; }, 1800);
   });
+})();
+</script>
+<div class="trybar" id="trybar" hidden>
+  <img src="brand/lx2-icon.svg" alt="" width="30" height="30">
+  <p><b>Try LOXEN CUT free</b><span>2 videos, every feature. No card.</span></p>
+  <a class="btn primary sm" id="trygo" href="https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-mac.dmg">Download for Mac</a>
+  <button class="trybar-x" type="button" aria-label="Hide"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,1,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+</div>
+<div class="helpme" id="helpme">
+  <div class="help-card" id="helpcard" role="dialog" aria-label="Quick help" hidden>
+    <p class="help-h">Hi! How can we help?</p>
+    <a href="https://discord.gg/zdYPRv99kn" target="_blank" rel="noopener"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.85,15.85,0,0,0,9.24,14.5A16.13,16.13,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Zm0,144H80a8,8,0,0,0-5.23,1.95L40,224V64H216Z"/></svg><span><b>Ask on Discord</b>Questions, buying, help with setup</span></a>
+    <a href="#buy" data-help-close><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M243.31,136,144,36.69A15.86,15.86,0,0,0,132.69,32H40a8,8,0,0,0-8,8v92.69A15.86,15.86,0,0,0,36.69,144L136,243.31a16,16,0,0,0,22.63,0l84.68-84.68a16,16,0,0,0,0-22.63ZM147.31,232,48,132.69V48h84.69L232,147.31ZM96,84A12,12,0,1,1,84,72,12,12,0,0,1,96,84Z"/></svg><span><b>Prices and the launch code</b>$19.99 a year with LOXENLAUNCH</span></a>
+    <a href="#install" data-help-close><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,144v64a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V144a8,8,0,0,1,16,0v56H208V144a8,8,0,0,1,16,0Zm-101.66,5.66a8,8,0,0,0,11.32,0l40-40a8,8,0,0,0-11.32-11.32L136,124.69V32a8,8,0,0,0-16,0v92.69L93.66,98.34a8,8,0,0,0-11.32,11.32Z"/></svg><span><b>Download and install</b>Mac (Apple chips) or Windows 10 and 11</span></a>
+    <a href="#faq" data-help-close><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg><span><b>Common questions</b>Cost, AI keys, privacy, computers</span></a>
+  </div>
+  <button class="help-btn" id="helpbtn" type="button" aria-expanded="false" aria-controls="helpcard" aria-label="Quick help">
+    <svg class="i-open" viewBox="0 0 256 256" aria-hidden="true"><path d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg>
+    <svg class="i-close" viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,1,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
+  </button>
+</div>
+<script>
+/* three small interactions: the caption style playground, the "Try it free" bar, and the help bubble */
+(() => {
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* 1. caption styles: tap one and the phone plays a line in that style */
+  const cap = document.getElementById("tpcap"), note = document.getElementById("trynote");
+  const NOTES = {bounce: "Energetic, word by word: each word pops in as it's said.",
+    hype: "Big and loud for the big moments: two words at a time, the key word in colour.",
+    clean: "Quiet and readable: whole phrases, for talk shows and podcasts.",
+    box: "Every word on a white box: readable on any background.",
+    spotlight: "The whole line stays; a light moves to the word being said.",
+    karaoke: "The line fills with colour as it's spoken, like a sing-along.",
+    cinema: "Elegant film-style lines low on the screen.",
+    comic: "Tilted, punchy comic-book words for funny moments.",
+    neon: "Glowing words for night streams and gaming.",
+    subtitle: "Classic subtitles on a dark band, for long talk."};
+  const LINE = ["NO", "WAY", "HE", "ACTUALLY", "HIT", "THAT", "SHOT"];
+  let sty = "bounce", i = 0, timer = 0;
+  const draw = () => {
+    if (!cap) return;
+    const group = sty === "hype" ? 2 : (["clean", "spotlight", "karaoke", "cinema", "subtitle"].includes(sty) ? LINE.length : 1);
+    let words;
+    if (group >= LINE.length) words = LINE.map((w, k) => `<i class="${k === i ? "on" : k < i ? "past" : ""}">${w}</i>`);
+    else { const s = Math.floor(i / group) * group; words = LINE.slice(s, s + group).map((w, k) => `<i class="${s + k === i ? "on" : ""}">${w}</i>`); }
+    cap.innerHTML = words.join(" ");
+    i = (i + 1) % LINE.length;
+  };
+  const play = () => { clearInterval(timer); i = 0; draw(); if (!still) timer = setInterval(draw, 420); };
+  document.querySelectorAll(".sty").forEach(b => b.addEventListener("click", () => {
+    document.querySelectorAll(".sty").forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+    sty = b.dataset.sty; cap.dataset.sty = sty; note.textContent = NOTES[sty] || ""; play();
+  }));
+  if (cap && "IntersectionObserver" in window) {
+    new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) play(); else clearInterval(timer); })).observe(cap);
+  } else play();
+
+  /* 2. the "Try it free" bar: after the top of the page, not over the download or pricing sections */
+  const bar = document.getElementById("trybar"), go = document.getElementById("trygo");
+  const win = /Windows/i.test(navigator.userAgent);
+  if (win) { go.href = "https://github.com/harshxt01/loxen-cut-releases/releases/latest/download/LOXEN-CUT-Setup-windows.exe"; go.textContent = "Download for Windows"; }
+  let hidden = false;
+  try { hidden = sessionStorage.getItem("loxen_trybar") === "x"; } catch (e) {}
+  const away = ["install", "buy"].map(id => document.getElementById(id)).filter(Boolean);
+  const over = new Set();
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(es => { es.forEach(e => e.isIntersecting ? over.add(e.target) : over.delete(e.target)); place(); }, {threshold: .15}) : null;
+  if (io) away.forEach(el => io.observe(el));
+  const place = () => {
+    const show = !hidden && scrollY > innerHeight * 1.1 && !over.size && innerHeight + scrollY < document.documentElement.scrollHeight - 220;
+    if (show && bar.hidden) { bar.hidden = false; requestAnimationFrame(() => bar.classList.add("on")); }
+    else if (!show && bar.classList.contains("on")) { bar.classList.remove("on"); setTimeout(() => { if (!bar.classList.contains("on")) bar.hidden = true; }, 350); }
+    document.body.classList.toggle("bar-up", show);
+  };
+  addEventListener("scroll", place, {passive: true}); addEventListener("resize", place);
+  bar.querySelector(".trybar-x").addEventListener("click", () => { hidden = true; try { sessionStorage.setItem("loxen_trybar", "x"); } catch (e) {} place(); });
+
+  /* 3. the help bubble */
+  const hb = document.getElementById("helpbtn"), hc = document.getElementById("helpcard"), hw = document.getElementById("helpme");
+  const setHelp = open => { hc.hidden = !open; hb.setAttribute("aria-expanded", String(open)); hw.classList.toggle("open", open); };
+  hb.addEventListener("click", () => setHelp(hc.hidden));
+  hc.addEventListener("click", e => { if (e.target.closest("[data-help-close]")) setHelp(false); });
+  document.addEventListener("click", e => { if (!hc.hidden && !e.target.closest("#helpme")) setHelp(false); });
+  addEventListener("keydown", e => { if (e.key === "Escape" && !hc.hidden) { setHelp(false); hb.focus(); } });
+  setTimeout(() => { if (hc.hidden) hw.classList.add("hello"); }, 9000);
 })();
 </script>
 </body>
